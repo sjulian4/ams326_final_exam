@@ -61,16 +61,29 @@ for i in range(M):
 y_inner = np.linalg.solve(A, b)
 y_fd = np.concatenate(([0.0], y_inner, [0.0]))
 
-# --- ADDED: TABLE GENERATION ---
+
+
+print("Shooting Method table")
 print(f"{'Index (n)':<10} | {'t_n':<10} | {'y_shoot(t_n)':<15} | {'y_fd(t_n)':<15}")
 print("-" * 55)
 for n in range(len(t_shoot)):
-    # Display every point or a specific subset
+    # display every point or a specific subset
     print(f"{n:<10} | {t_shoot[n]:<10.3f} | {y_shoot[n]:<15.6f} | {y_fd[n]:<15.6f}")
+
+
+print("Finite Difference Method table")
+
+print(f"{'Index (n)':<10} | {'t_n':<10} | {'y_fd(t_n)':<15}")
+print("-" * 55)
+for n in range(len(t_fd)):
+    if n % 5 == 0 or n == len(t_fd) - 1: 
+        print(f"{n:<10} | {t_fd[n]:<10.3f} | {y_fd[n]:<15.6f}")
+
+
 
 print(f"\nOptimal Shooting Slope s* : {s_opt:.6f}")
 
-# Visualization
+# visualization
 plt.figure(figsize=(10, 5))
 plt.plot(t_shoot, y_shoot, 'b-', label='Shooting Method')
 plt.plot(t_fd, y_fd, 'r--', label='Finite Difference Method')
