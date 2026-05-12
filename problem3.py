@@ -19,7 +19,7 @@ for n in range(N_days - 1):
 # sample validation table
 print(f"{'n':<5} | {'x_n':<12} | {'V_n':<10}")
 print("-" * 32)
-for n in [0, 1, 2, 97, 98, 99]:
+for n in range(N_days):
     print(f"{n:<5} | {x_rates[n]:<12.6f} | {V[n]:<10.2f}")
 
 # frequency analysis DFT
